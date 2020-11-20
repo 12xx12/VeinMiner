@@ -5,16 +5,17 @@ function Initialize(Plugin)
 	Plugin:SetName("VeinMiner")
 	Plugin:SetVersion(1)
 
+	-- Use the InfoReg shared library to process the Info.lua file:
+	dofile(cPluginManager:GetPluginsPath() .. "/InfoReg.lua")
+	RegisterPluginInfoCommands()
+	RegisterPluginInfoConsoleCommands()
+
 	-- Hooks
 
 	PLUGIN = Plugin -- NOTE: only needed if you want OnDisable() to use GetName() or something like that
 
 	cPluginManager.AddHook(cPluginManager.HOOK_PLAYER_BREAKING_BLOCK, BreakingBlock)
 	cPluginManager.AddHook(cPluginManager.HOOK_PLAYER_JOINED, RegisterPlayer)
-
-	-- Command Bindings
-
-	cPluginManager.BindCommand("/toggleveinminer", "veinminer.toggle", Toggle, " - Toggle VeinMiner functionality")
 
 	LOG("Initialised " .. Plugin:GetName() .. " v." .. Plugin:GetVersion())
 	return true
