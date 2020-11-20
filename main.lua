@@ -17,7 +17,7 @@ function Initialize(Plugin)
 	cPluginManager.AddHook(cPluginManager.HOOK_PLAYER_BREAKING_BLOCK, BreakingBlock)
 	cPluginManager.AddHook(cPluginManager.HOOK_PLAYER_JOINED, RegisterPlayer)
 
-	LOG("Initialised " .. Plugin:GetName() .. " v." .. Plugin:GetVersion())
+	LOG("Initialised " .. Plugin:GetName() .. " Version" .. Plugin:GetVersion())
 	return true
 end
 
@@ -69,7 +69,7 @@ end
 function BreakingBlock(Player, BlockX, BlockY, BlockZ, BlockFace, BlockType, BlockMeta)
 	MarkedBlocks = {}
 	LOG(Player:GetPermissions())
-	if Player:GetGameMode() ~= 0 or not ToggleState[Player:GetUUID()] or not Player:HasPermission("veinminer.use") then
+	if (Player:GetGameMode() ~= 0 or not ToggleState[Player:GetUUID()]) or (not Player:HasPermission("veinminer.use") and not Player:HasPermission("*")) then
 		return false
 	end
 	if IsOreType(BlockType) then
