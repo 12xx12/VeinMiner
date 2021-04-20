@@ -1,7 +1,7 @@
 g_PluginInfo =
 {
 	Name = "VeinMiner Plugin",
-	Date = "2020-11-20",
+	Date = "2021-04-20",
 	Description = "This Plugin emulates the VeinMiner plugin functionality for Cuberite. It breaks all ores similar to any initial broken ore.",
 
 	-- The following members will be documented in greater detail later:

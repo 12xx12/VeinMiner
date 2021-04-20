@@ -3,7 +3,7 @@ ToggleState = {}
 
 function Initialize(Plugin)
 	Plugin:SetName("VeinMiner")
-	Plugin:SetVersion(1)
+	Plugin:SetVersion(2)
 
 	-- Use the InfoReg shared library to process the Info.lua file:
 	dofile(cPluginManager:GetPluginsPath() .. "/InfoReg.lua")
@@ -69,7 +69,7 @@ end
 function BreakingBlock(Player, BlockX, BlockY, BlockZ, BlockFace, BlockType, BlockMeta)
 	MarkedBlocks = {}
 	LOG(Player:GetPermissions())
-	if (Player:GetGameMode() ~= 0 or not ToggleState[Player:GetUUID()]) or (not Player:HasPermission("veinminer.use") and not Player:HasPermission("*")) then
+	if (not Player:IsGameModeSurvival() or not ToggleState[Player:GetUUID()]) or (not Player:HasPermission("veinminer.use") and not Player:HasPermission("*")) then
 		return false
 	end
 	if IsOreType(BlockType) then
