@@ -4,6 +4,7 @@ A Vein Miner Plugin for Cuberite
 # Version History
 
 | Version | Description |
+| ----------- | ------------- |
 | 1 | Initial Release |
 | 2 | Updated to use proper gamemode check|
 
